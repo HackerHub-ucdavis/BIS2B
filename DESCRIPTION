@@ -1,6 +1,6 @@
 Package: BIS2B
 Title: Computation in BIS 2B
-Version: 0.0.0.9000
+Version: 1.0.0.0000
 Authors@R: 
     person("Yifeng", "He", , "yfhe@ucdavis.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
