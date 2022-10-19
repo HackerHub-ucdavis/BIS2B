@@ -1,6 +1,4 @@
-
 library(ggplot2)
-library(gridExtra)
 
 #' Rarefaction Plot
 #'
@@ -15,6 +13,7 @@ library(gridExtra)
 #' rf <- read.csv("../data/lab1_rarefaction.csv", header = F)
 #' makeRarefactionPlot(rf[, 1:2], title = "Group 1")
 #' @export
+#' @import ggplot2
 rarefaction_plot <- function(df, title = "") {
     colnames(df) <- c("y", "x")
     ggplot(df, aes(x, y)) +
