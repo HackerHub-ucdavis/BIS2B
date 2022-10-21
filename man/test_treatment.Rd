@@ -4,10 +4,10 @@
 \alias{test_treatment}
 \title{Test for a Treatment}
 \usage{
-test_treatment(data, treatement, components, alpha = 0.05)
+test_treatment(memo, treatement, components, df, alpha = 0.05)
 }
 \arguments{
-\item{data}{a cleaned dataframe (from clean_lab4_excel)}
+\item{memo}{a cleaned dataframe (from summerize_lab4)}
 
 \item{treatement}{string the name of this treatement}
 
@@ -20,4 +20,8 @@ a complete table of test results
 }
 \description{
 t test for a treatment by given compoents
+}
+\examples{
+summ <- summary(clean_lab4_excel(raw_df))
+test_treatment(summ$data, treatments[i], components, summ$df)
 }
