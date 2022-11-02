@@ -16,6 +16,7 @@ clean_lab4_excel <- function(raw) {
     clean
 }
 
+#' add mean, sd, se to lab data
 #' @param data a cleaned dataframe (from clean_lab4_excel)
 #' @return mean, standard deviation, standard error
 #' @examples
@@ -81,6 +82,7 @@ test_treatment <- function(memo, treatement, components, df, alpha = 0.05) {
     result
 }
 
+#' make plot on the component measurements
 #' @param component_df dataframe of one component
 #' @param title string name of the plot
 #' @return ggplot graph object
