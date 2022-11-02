@@ -81,27 +81,3 @@ test_treatment <- function(memo, treatement, components, df, alpha = 0.05) {
     }
     result
 }
-
-#' make plot on the component measurements
-#' @param component_df dataframe of one component
-#' @param title string name of the plot
-#' @return ggplot graph object
-#' @examples
-#' Mean	    SD	    SE	    treatment	morph
-#' 22.44	8.04	2.32	No	        0
-#' 14.55	2.68	0.77	No	        1
-#' 22.06	12.29	3.55	Intramorph	0
-#' 17.03	4.53	1.31	Intramorph	1
-#' 16.72	3.97	1.15	Intermorph	0
-#' 17.67	7.27	2.10	Intermorph	1
-#' @import ggplot2
-#' @export
-plot_mean_err <- function(component_df, title = "") {
-    ggplot(component_df, aes(x = treatment, y = Mean, color = morph)) +
-        geom_point() +
-        geom_errorbar(aes(ymin = Mean - SE, ymax = Mean + SE),
-            width = .2,
-            position = position_dodge(0.05)
-        ) +
-        ggtitle(title)
-}
