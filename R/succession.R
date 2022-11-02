@@ -21,6 +21,7 @@ panel_coverage <- function(a, b) {
     )
     list(
         table = df,
+        total_number_species = nrow(df),
         total_percent_cover = total_percent_cover,
         true_diversity_D = prod(df$P^(-df$P)),
         total_percent_on_primary_surface = sum(df$B),
