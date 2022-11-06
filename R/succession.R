@@ -1,4 +1,6 @@
 # lab 6
+library(readxl)
+library(comprehenr)
 
 #' complete the coverage table for one panel
 #' @param a total % converage
@@ -27,4 +29,37 @@ panel_coverage <- function(a, b) {
         total_percent_on_primary_surface = sum(df$B),
         total_percent_overgrowth = sum(df$overgrowth)
     )
+}
+
+#' load data from lab6 excel
+#' NOTE not a genaric function
+#'
+#' @param xlsx string path to excel file
+#' @return list of dataframes
+#' @import readxl
+#' @import comprehenr
+#' @export
+from_lab6_excel <- function(xlsx) {
+    sheets <- excel_sheets(xlsx)
+
+    dfs <- to_list(
+        for (sheet in sheets)
+        na.omit(read_xlsx(xlsx, sheet = sheet))[-1]
+    )
+    class(dfs) <- c("succession", class(dfs))
+    dfs
+}
+
+#' summary of succession (lab6 data)
+#'
+#' @param df dataframe
+#' @param month age of panel
+#' @return summary dataframe
+#' @export
+summary.succession <- function(df, age) {
+    summ <- as.data.frame(t(rbind(colMeans(df), sapply(df, sd))))
+    colnames(summ) <- c("mean", "std")
+    summ$age <- as.factor(rep(age, ncol(df)))
+    summ$category <- rownames(summ)
+    summ
 }
