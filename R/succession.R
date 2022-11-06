@@ -1,6 +1,5 @@
 # lab 6
 library(readxl)
-library(comprehenr)
 
 #' complete the coverage table for one panel
 #' @param a total % converage
@@ -37,17 +36,15 @@ panel_coverage <- function(a, b) {
 #' @param xlsx string path to excel file
 #' @return list of dataframes
 #' @import readxl
-#' @import comprehenr
 #' @export
 from_lab6_excel <- function(xlsx) {
     sheets <- excel_sheets(xlsx)
-
-    dfs <- to_list(
-        for (sheet in sheets)
-        na.omit(read_xlsx(xlsx, sheet = sheet))[-1]
-    )
-    class(dfs) <- c("succession", class(dfs))
-    dfs
+    to_succession_obj <- function(sheet) {
+        df <- na.omit(read_xlsx(xlsx, sheet = sheet))[-1]
+        class(df) <- c("succession", class(df))
+        df
+    }
+    lapply(sheets, to_succession_obj)
 }
 
 #' summary of succession (lab6 data)
