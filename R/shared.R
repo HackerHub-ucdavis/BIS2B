@@ -31,3 +31,9 @@ plot_mean_err <- function(df, x, y, err, color, title = "") {
         ) +
         ggtitle(title)
 }
+
+#' string to list of char
+#' @param s str
+#' @return list of characters in s
+#' @export
+str2chars <- function(s) strsplit(s, "")[[1]]
