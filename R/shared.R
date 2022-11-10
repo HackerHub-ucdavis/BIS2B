@@ -1,5 +1,4 @@
 # shared functions
-library(ggplot2)
 
 #' make plot on the mean measurements with error bar
 #' @param df dataframe of all means and errors, etc
@@ -21,15 +20,16 @@ library(ggplot2)
 #' @import ggplot2
 #' @export
 plot_mean_err <- function(df, x, y, err, color, title = "") {
-    ggplot(df, aes_string(x = x, y = y, color = color)) +
-        geom_point() +
-        geom_errorbar(
-            aes_string(ymin = paste0(y, "-", err), ymax = paste0(y, "+", err)
-        ),
+    ggplot2::ggplot(df, ggplot2::aes_string(x = x, y = y, color = color)) +
+        ggplot2::geom_point() +
+        ggplot2::geom_errorbar(
+            ggplot2::aes_string(
+                ymin = paste0(y, "-", err), ymax = paste0(y, "+", err)
+            ),
             width = .2,
-            position = position_dodge(0.05)
+            position = ggplot2::position_dodge(0.05)
         ) +
-        ggtitle(title)
+        ggplot2::ggtitle(title)
 }
 
 #' string to list of char

@@ -1,5 +1,4 @@
 # lab 4
-library(ggplot2)
 
 #' clean the lab data sheet
 #'

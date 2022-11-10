@@ -1,4 +1,3 @@
-library(ggplot2)
 
 #' Rarefaction Plot
 #'
@@ -16,9 +15,9 @@ library(ggplot2)
 #' @import ggplot2
 rarefaction_plot <- function(df, title = "") {
     colnames(df) <- c("y", "x")
-    ggplot(df, aes(x, y)) +
-        geom_point() +
-        geom_smooth(method = "loess", se = F, span = 2) +
-        labs(x = "#Individuals", y = "#Species") +
-        ggtitle(title)
+    ggplot2::ggplot(df, ggplot2::aes(x, y)) +
+        ggplot2::geom_point() +
+        ggplot2::geom_smooth(method = "loess", se = F, span = 2) +
+        ggplot2::labs(x = "#Individuals", y = "#Species") +
+        ggplot2::ggtitle(title)
 }
